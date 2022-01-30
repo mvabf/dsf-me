@@ -1,0 +1,13 @@
+
+version: '3.2'
+services:
+  db:
+    image: mongo:4.2
+    container_name: desafio-melhor-envio-mongo
+    restart: always
+    ports:
+      - 27017:27017
+    environment:
+      MONGO_INITDB_DATABASE: report
+      MONGO_INITDB_ROOT_USERNAME: report
+      MONGO_INITDB_ROOT_PASSWORD: report
