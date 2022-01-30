@@ -19,7 +19,8 @@ class ReportController {
     public async listRegisters(req: Request, res: Response): Promise<Response> {
         // const data = await ReportRepository.list();
         // const data = await ReportRepository.generateConsumersCount();
-        const data = await ReportRepository.generateServicesCount();
+        // const data = await ReportRepository.generateServicesCount();
+        const data = await ReportRepository.generateLatenciesAvg();
     
         // converter.json2csv(data, (_, csv) => {
         //     fs.writeFileSync('consumer_report.csv', csv!, 'utf-8');

@@ -4,7 +4,9 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "serve": "ts-node-dev --inspect --ignore-watch node_modules src/server.ts"
+    "serve": "ts-node-dev --inspect --ignore-watch node_modules src/server.ts",
+    "build": "tsc -outDir dist",
+    "start": "node dist/server.js"
   },
   "devDependencies": {
     "@types/express": "^4.17.13",

@@ -5,7 +5,7 @@ class ReportRepository {
         await report.collection.insertOne(dataReport);
     }
 
-    async list(){
+    async list() {
         const data = report.find().lean();
 
         return data;
@@ -22,6 +22,21 @@ class ReportRepository {
     async generateServicesCount() {
         const data = await report.aggregate([
             { "$group": { _id: "$data.service.id", count: { $sum: 1 } } }
+        ]);
+
+        return data;
+    }
+
+    async generateLatenciesAvg() {
+        const data = await report.aggregate([
+            {
+                "$group": {
+                    _id: "$data.service.id",
+                    avg_proxy: { $avg: "$data.latencies.proxy" },
+                    avg_request: { $avg: "$data.latencies.request" },
+                    avg_gateway: { $avg: "$data.latencies.kong" }
+                }
+            }
         ]);
 
         return data;
