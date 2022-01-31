@@ -4,7 +4,6 @@ import { fileUploadMiddleware } from '../middlewares/fileUploadMiddleware';
 
 const reportRouter = Router();
 
-reportRouter.post('/', fileUploadMiddleware('logs'), ReportController.uploaded);
-reportRouter.get('/', ReportController.listRegisters);
+reportRouter.post('/', fileUploadMiddleware('logs'), ReportController.receiveLog);
 
 export default reportRouter;

@@ -1,6 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import ReportRepository from '../database/repository/ReportRepository';
+import { directoryExists } from './createReportFolder';
 
 
 class ProcessLogs {
@@ -9,20 +10,22 @@ class ProcessLogs {
 
         const allFileContents = fs.readFileSync(logPath, 'utf-8');
 
-        const arr: any = [];
+        const logData: any = [];
 
         allFileContents.split(/\r?\n/).forEach(line => {
             try {
                 const data = JSON.parse(line);
 
-                arr.push(data);
+                logData.push(data);
 
             } catch (error) {
                 return;
             }
         });
 
-        await ReportRepository.save(arr);
+        await ReportRepository.save(logData);
+
+        directoryExists();
     }
 }
 
