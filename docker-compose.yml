@@ -11,3 +11,12 @@ services:
       MONGO_INITDB_DATABASE: report
       MONGO_INITDB_ROOT_USERNAME: report
       MONGO_INITDB_ROOT_PASSWORD: report
+
+  # backend:
+  #   container_name: desafio-melhor-envio-node
+  #   restart: always
+  #   build: '.'
+  #   depends_on: 
+  #     - db
+  #   ports:
+  #     - 3000:3000

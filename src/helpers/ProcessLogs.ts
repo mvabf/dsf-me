@@ -10,9 +10,15 @@ class ProcessLogs {
         const allFileContents = fs.readFileSync(logPath, 'utf-8');
 
         allFileContents.split(/\r?\n/).forEach(async (line) => {
-            const data = JSON.parse(line);
+            try {
+                const data = JSON.parse(line);
 
-            await ReportRepository.save({ data: data });
+                await ReportRepository.save({ data });
+
+            } catch (error) {
+                return;
+                
+            }
         });
     }
 }

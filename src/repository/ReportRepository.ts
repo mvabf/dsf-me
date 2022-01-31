@@ -1,14 +1,8 @@
 import report from '../schemas/Report'
 
 class ReportRepository {
-    async save(dataReport: Object) {
-        await report.collection.insertOne(dataReport);
-    }
-
-    async list() {
-        const data = report.find().lean();
-
-        return data;
+    async save(dataReport: object) {
+             await report.collection.insertOne(dataReport);
     }
 
     async generateConsumersCount() {
