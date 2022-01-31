@@ -30,3 +30,12 @@ example:
 
 docker cp desafio-melhor-envio-node:/app/reports c:/users/mvabf/Documents
 ```
+
+## Running without Docker
+before running set your mongodb credentials on database/db.ts
+
+```
+yarn
+yarn build
+yarn start
+```
