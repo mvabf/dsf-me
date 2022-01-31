@@ -1,8 +1,7 @@
 import { Request, Response } from 'express';
-
-import converter from 'json-2-csv';
 import ProcessLogs from '../helpers/ProcessLogs';
 import ReportRepository from '../repository/ReportRepository';
+import consumerReport from '../services/GenerateConsumersReport';
 
 class ReportController {
     public async uploaded(req: Request, res: Response): Promise<Response> {
@@ -12,6 +11,7 @@ class ReportController {
             return res.status(400).json({ message: 'File not uploaded!' });
 
         await ProcessLogs.processLog();
+        await consumerReport.generateReport();
 
         return res.json({ saved: true });
     }

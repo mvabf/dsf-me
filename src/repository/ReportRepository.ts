@@ -1,21 +1,27 @@
 import report from '../schemas/Report'
 
 class ReportRepository {
-    async save(dataReport: object) {
-             await report.collection.insertOne(dataReport);
+    async save(dataReport: any) {
+             await report.collection.insertMany(dataReport);
     }
 
     async generateConsumersCount() {
         const data = await report.aggregate([
-            { "$group": { _id: "$data.authenticated_entity", count: { $sum: 1 } } }
+            { "$group": { _id: "$authenticated_entity", count: { $sum: 1 } } }
         ]);
+
+        return data;
+    }
+
+    async list() {
+        const data = report.find().lean();
 
         return data;
     }
 
     async generateServicesCount() {
         const data = await report.aggregate([
-            { "$group": { _id: "$data.service.id", count: { $sum: 1 } } }
+            { "$group": { _id: "$service.id", count: { $sum: 1 } } }
         ]);
 
         return data;
@@ -25,10 +31,10 @@ class ReportRepository {
         const data = await report.aggregate([
             {
                 "$group": {
-                    _id: "$data.service.id",
-                    avg_proxy: { $avg: "$data.latencies.proxy" },
-                    avg_request: { $avg: "$data.latencies.request" },
-                    avg_gateway: { $avg: "$data.latencies.kong" }
+                    _id: "$service.id",
+                    avg_proxy: { $avg: "$latencies.proxy" },
+                    avg_request: { $avg: "$latencies.request" },
+                    avg_gateway: { $avg: "$latencies.kong" }
                 }
             }
         ]);
