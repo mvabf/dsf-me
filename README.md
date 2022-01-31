@@ -13,12 +13,12 @@ docker-compose up -d
 * The MongoDb database will run on **PORT 27017** ;
 * Make sure all these ports are available before running the above command.
 
-## Usando a aplicação
+## Using the application
 
 * upload your logs using insomnia
 * the insomnia json will be in the project
 
-![alt text](https://imgur.com/sXirDkg)
+![insomnia](https://i.imgur.com/sXirDkg.jpg)
 
 * after the log is processed execute the following docker command
 * the command will copy the reports folder to host computer
