@@ -20,11 +20,11 @@ docker-compose up -d
 
 ![insomnia](https://i.imgur.com/sXirDkg.jpg)
 
-* after the log is processed execute the following docker command
+* after the log are processed execute the following docker command
 * the command will copy the reports folder to host computer
 
 ```
-docker cp desafio-melhor-envio-node:/app/reports <path_to_save>
+docker cp desafio-melhor-envio-node:/app/reports <your_path_to_save>
 
 example:
 
