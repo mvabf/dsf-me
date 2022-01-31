@@ -1,27 +1,26 @@
-## Running with Docker
+## Usando a aplicação
+* Essa aplicação tem como objetivo processar um dump de logs de uma api gateway e gerar reports
+## Rodando com docker
 
-The application was setup to be ran from a docker-compose.yml file.
-
-To run it that way, you just need to have `docker` and `docker-compose` installed and run the following command in the root folder of this repository (where the docker-compose.yml file is located):
+* Antes de tudo, tenha certeza que em sua máquina esteja instalado o docker e o docker-compose
+* Executar o comando na raiz do repositório
 
 ```
 docker-compose up -d
 ```
 
-**Important Notes**
-* The back-end application will run on **PORT 3000** ;
-* The MongoDb database will run on **PORT 27017** ;
-* Make sure all these ports are available before running the above command.
+**Nota importantes**
+* O servidor node irá rodar em  **PORT 3000** ;
+* O mongodb irá rodar em  **PORT 27017** ;
+* Tenha certeza que essas portas estejam disponíveis antes de executar a aplicação.
 
-## Using the application
-
-* upload your logs using insomnia
-* the insomnia json will be in the project
+* Faça o upload do seu log usando insomnia
+* Uma collection do insomnia foi inserida na raiz do projeto para facilitar os testes
 
 ![insomnia](https://i.imgur.com/sXirDkg.jpg)
 
-* after the log are processed execute the following docker command
-* the command will copy the reports folder to host computer
+* depois que o log for processado
+* executar o comando abaixo irá fazer uma copia da pasta reports geradas para sua máquina
 
 ```
 docker cp desafio-melhor-envio-node:/app/reports <your_path_to_save>
@@ -31,8 +30,8 @@ example:
 docker cp desafio-melhor-envio-node:/app/reports c:/users/mvabf/Documents
 ```
 
-## Running without Docker
-before running set your mongodb credentials on database/db.ts
+## Rodando sem docker
+antes de rodar, definir suas credenciais do mongodb em database/db.ts
 
 ```
 yarn
