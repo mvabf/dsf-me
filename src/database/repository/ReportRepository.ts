@@ -13,12 +13,6 @@ class ReportRepository {
         return data;
     }
 
-    async list() {
-        const data = report.find().lean();
-
-        return data;
-    }
-
     async generateServicesCount() {
         const data = await report.aggregate([
             { "$group": { _id: "$service.id", count: { $sum: 1 } } }

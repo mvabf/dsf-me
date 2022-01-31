@@ -1,6 +1,6 @@
 import fs from 'fs';
 import path from 'path';
-import ReportRepository from '../repository/ReportRepository';
+import ReportRepository from '../database/repository/ReportRepository';
 
 
 class ProcessLogs {
@@ -19,7 +19,6 @@ class ProcessLogs {
 
             } catch (error) {
                 return;
-
             }
         });
 
